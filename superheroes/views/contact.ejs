@@ -1,0 +1,99 @@
+<!-- ICONO PESTAÑA -->
+<link rel="shortcut icon" href="/icons/contact.svg" type="image/x-icon">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/css/contact.css">
+
+<!-- BODY -->
+<div class="contenedor">
+    <div class="header">
+        <h1>Contáctanos</h1>
+        <p class="subtitle">Tenes alguna pregunta o sugerencia? Nos encantaría escucharte</p>
+    </div>
+    <div class="contenido">
+        <div class="contacto-grid">
+            <div class="info-section">
+                <div class="info-card">
+                    <div class="info-icono"><img src="/icons/email.svg" alt="Email" class="info-icono-img"></div>
+                    <h3>Email</h3>
+                    <p>contacto@superheroes.com</p>
+                    <p class="info-descripcion">Respuesta en menos de 24 horas</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icono"><img src="/icons/celular.svg" alt="Telefono" class="info-icono-img"></div>
+                    <h3>Teléfono</h3>
+                    <p>+54 383 423-4567</p>
+                    <p class="info-descripcion">Lunes a Viernes, 9:00 - 18:00</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icono"><img src="/icons/ubicacion.svg" alt="Ubicacion" class="info-icono-img"></div>
+                    <h3>Ubicación</h3>
+                    <p>Catamarca, Argentina</p>
+                    <p class="info-descripcion">Módulo 3 - EJS Layout P1</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icono"><img src="/icons/horario.svg" alt="Horario" class="info-icono-img"></div>
+                    <h3>Horario de Atención</h3>
+                    <p>Lunes a Viernes: 9:00 - 18:00</p>
+                    <p class="info-descripcion">Sábados: 10:00 - 14:00</p>
+                </div>
+            </div>
+            <div class="form-section">
+                <h2>Envíanos un Mensaje</h2>
+                <form class="contacto-form">
+                    <div class="form-grupo">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="asunto">Asunto</label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">Selecciona un asunto</option>
+                            <option value="consulta">Consulta General</option>
+                            <option value="sugerencia">Sugerencia</option>
+                            <option value="reporte">Reportar un Problema</option>
+                            <option value="colaboracion">Colaboración</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="boton-enviar">
+                        <span>Enviar Mensaje</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="redes-sociales">
+            <h2>Seguinos en Redes Sociales</h2>
+            <div class="redes-grid">
+                <a href="#" class="red-social">
+                    <div class="red-icono"><img src="/icons/facebook.svg" alt="Facebook" class="red-icono-img"></div>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="red-social">
+                    <div class="red-icono"><img src="/icons/twitter.svg" alt="Twitter" class="red-icono-img"></div>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="red-social">
+                    <div class="red-icono"><img src="/icons/instagram.svg" alt="Instagram" class="red-icono-img"></div>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="red-social">
+                    <div class="red-icono"><img src="/icons/linkedin.svg" alt="Linkedin" class="red-icono-img"></div>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/contact.js"></script>

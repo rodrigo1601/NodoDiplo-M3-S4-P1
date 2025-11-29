@@ -1,0 +1,111 @@
+<!-- ICONO PESTAÑA -->
+<link rel="shortcut icon" href="/icons/home.svg" type="image/x-icon">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/css/index.css">
+
+<!-- BODY -->
+<div class="contenedor">
+    <div class="hero-section">
+        <h1>Bienvenido al registro de Superhéroes</h1>
+        <p class="hero-subtitle">Estadisticas generales de todo tipo de heroes</p>
+    </div>
+    <div class="stats-destacadas">
+        <!-- Superhéroe más viejo -->
+        <% 
+        const heroeViejo = superheroes.reduce((prev, current) => 
+            (prev.edad > current.edad) ? prev : current
+        );
+        %>
+        <div class="stat-card">
+            <div class="stat-icon"><img src="/icons/viejo.svg" alt="Superheroe más viejo icono" class="stat-icon-img"></div>
+            <h2>Superhéroe más viejo</h2>
+            <div class="stat-nombre"><%= heroeViejo.nombreSuperHeroe %></div>
+            <div class="stat-detalle">
+                <strong>Edad:</strong> <%= heroeViejo.edad %> años
+            </div>
+            <div class="stat-detalle">
+                <strong>Nombre Real:</strong> <%= heroeViejo.nombreReal %>
+            </div>
+            <a href="/api/heroes" class="boton-ver-mas">Ver Dashboard</a>
+        </div>
+        <!-- Superhéroe con más poderes -->
+        <% 
+        const heroePoderes = superheroes.reduce((prev, current) => 
+            (prev.poderes.length > current.poderes.length) ? prev : current
+        );
+        %>
+        <div class="stat-card">
+            <div class="stat-icon"><img src="/icons/poderes.svg" alt="Superheroe con más poderes icono" class="stat-icon-img"></div>
+            <h2>Superhéroe con más poderes</h2>
+            <div class="stat-nombre"><%= heroePoderes.nombreSuperHeroe %></div>
+            <div class="stat-detalle">
+                <strong>Poderes:</strong> <%= heroePoderes.poderes.length %>
+            </div>
+            <div class="poderes-lista">
+                <% heroePoderes.poderes.forEach(poder => { %>
+                    <span class="poder-badge"><%= poder %></span>
+                <% }); %>
+            </div>
+            <a href="/api/heroes" class="boton-ver-mas">Ver Dashboard</a>
+        </div>
+        <!-- Superhéroe con más aliados -->
+        <% 
+        const heroeAliados = superheroes.reduce((prev, current) => {
+            const prevAliados = prev.aliados ? prev.aliados.length : 0;
+            const currentAliados = current.aliados ? current.aliados.length : 0;
+            return (prevAliados > currentAliados) ? prev : current;
+        });
+        %>
+        <div class="stat-card">
+            <div class="stat-icon"><img src="/icons/aliado.svg" alt="Superheroe con más aliados icono" class="stat-icon-img"></div>
+            <h2>Superhéroe con más aliados</h2>
+            <div class="stat-nombre"><%= heroeAliados.nombreSuperHeroe %></div>
+            <div class="stat-detalle">
+                <strong>Aliados:</strong> <%= heroeAliados.aliados ? heroeAliados.aliados.length : 0 %>
+            </div>
+            <% if(heroeAliados.aliados && heroeAliados.aliados.length > 0) { %>
+                <div class="poderes-lista">
+                    <% heroeAliados.aliados.forEach(aliado => { %>
+                        <span class="poder-badge"><%= aliado %></span>
+                    <% }); %>
+                </div>
+            <% } %>
+            <a href="/api/heroes" class="boton-ver-mas">Ver Dashboard</a>
+        </div>
+        <!-- Superhéroe con más enemigos -->
+        <% 
+        const heroeEnemigos = superheroes.reduce((prev, current) => {
+            const prevEnemigos = prev.enemigos ? prev.enemigos.length : 0;
+            const currentEnemigos = current.enemigos ? current.enemigos.length : 0;
+            return (prevEnemigos > currentEnemigos) ? prev : current;
+        });
+        %>
+        <div class="stat-card">
+            <div class="stat-icon"><img src="/icons/enemigo.svg" alt="Superheroe con más enemigos icono" class="stat-icon-img"></div>
+            <h2>Superhéroe con más enemigos</h2>
+            <div class="stat-nombre"><%= heroeEnemigos.nombreSuperHeroe %></div>
+            <div class="stat-detalle">
+                <strong>Enemigos:</strong> <%= heroeEnemigos.enemigos ? heroeEnemigos.enemigos.length : 0 %>
+            </div>
+            <% if(heroeEnemigos.enemigos && heroeEnemigos.enemigos.length > 0) { %>
+                <div class="poderes-lista">
+                    <% heroeEnemigos.enemigos.forEach(enemigo => { %>
+                        <span class="poder-badge enemigo"><%= enemigo %></span>
+                    <% }); %>
+                </div>
+            <% } %>
+            <a href="/api/heroes" class="boton-ver-mas">Ver Dashboard</a>
+        </div>
+    </div>
+    <div class="estadisticas-generales">
+        <div class="stat-general">
+            <div class="stat-numero"><%= superheroes.length %></div>
+            <div class="stat-label">Total de Superhéroes</div>
+        </div>
+        <div class="stat-general">
+            <div class="stat-numero"><%= superheroes.filter(h => h.edad > 30).length %></div>
+            <div class="stat-label">Mayores de 30 años</div>
+        </div>
+    </div>
+</div>

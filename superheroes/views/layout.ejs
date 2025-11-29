@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('partials/navbar') %>
+
+    <!-- CONTENIDO DINAMICO -->
+    <main class="main">
+        <%- body %>
+    </main>
+
+    <!-- FOOTER -->
+    <%- include('partials/footer') %>
+</body>
+</html>

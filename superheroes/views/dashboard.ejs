@@ -1,0 +1,128 @@
+<!-- ICONO PESTAÑA -->
+<link rel="shortcut icon" href="/icons/dashboard.svg" type="image/x-icon">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/css/dashboard.css">
+
+<!-- BODY -->
+<div class="contenedor">
+    <div class="header">
+        <h1>Dashboard de Superheroes</h1>
+    </div>
+    
+    <div class="lista-heroes">
+        <% if(superheroes.length === 0){ %>
+            <div class="no-heroes">
+                <p>No hay heroes cargados</p>
+            </div>
+        <% } else { %>
+            <div class="heroes-grid">
+                <% superheroes.forEach(heroe => { %>
+                    <div class="heroe-carta">
+                        <h2 class="heroe-nombre"><%= heroe.nombreSuperHeroe %></h2>
+                        <div class="heroe-info">
+                            <strong>Nombre Real:</strong> <%= heroe.nombreReal %>
+                        </div>
+                        
+                        <div class="heroe-info">
+                            <strong>Edad:</strong> <%= heroe.edad %> años
+                        </div>
+                        
+                        <div class="heroe-info">
+                            <strong>Planeta de origen:</strong> <%= heroe.planetaOrigen? heroe.planetaOrigen : 'Sin planeta de origen cargado' %>
+                        </div>
+                        
+                        <div class="heroe-info">
+                            <strong>Debilidad:</strong> <%= heroe.debilidad ? heroe.debilidad : 'Sin debilidad cargada' %>
+                        </div>
+                        
+                        <div class="heroe-arrays">
+                            <h4>Poderes:</h4>
+                            <div class="tags">
+                                <% heroe.poderes.forEach(poder => { %>
+                                    <span class="span-array"><%= poder %></span>
+                                <% }); %>
+                            </div>
+                        </div>
+                        
+                        <div class="heroe-arrays">
+                            <h4>Aliados:</h4>
+                            <div class="tags">
+                                <% if(heroe.aliados && heroe.aliados.length > 0) { %>
+                                    <% heroe.aliados.forEach(aliado => { %>
+                                        <span class="span-array"><%= aliado %></span>
+                                    <% }); %>
+                                <% } else { %>
+                                    <span class="span-array-sin-datos">Sin aliados cargados</span>
+                                <% } %>
+                            </div>
+                        </div>
+                        
+                        <div class="heroe-arrays">
+                            <h4>Enemigos:</h4>
+                            <div class="tags">
+                                <% if(heroe.enemigos && heroe.enemigos.length > 0) { %>
+                                    <% heroe.enemigos.forEach(enemigo => { %>
+                                        <span class="span-array"><%= enemigo %></span>
+                                    <% }); %>
+                                <% } else { %>
+                                    <span class="span-array-sin-datos">Sin enemigos cargados</span>
+                                <% } %>
+                            </div>
+                        </div>
+                        
+                        <div class="heroe-info">
+                            <strong>Creador:</strong> <%= heroe.creador ? heroe.creador : 'Sin creador cargado' %>
+                        </div>
+                        
+                        <div class="heroes-accion">
+                            <a href="heroes/editar/<%= heroe._id %>" class="heroe-accion" id="boton-editar">Editar</a>
+                            <button class="heroe-accion" id="boton-eliminar" onclick="confirmarEliminacion('<%= heroe._id %>', '<%= heroe.nombreSuperHeroe %>')">Eliminar</button>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+
+            <!-- Paginación -->
+            <div class="paginacion-contenedor">
+                <div class="paginacion-info">
+                    Mostrando <span id="paginacion-inicio">1</span> - <span id="paginacion-fin">4</span> de <span id="paginacion-total"><%= superheroes.length %></span> superhéroes
+                </div>
+                
+                <div class="paginacion-controles">
+                    <button class="boton-paginacion" id="btn-primera" onclick="irAPagina(1)">
+                        <span>❮❮</span>
+                    </button>
+                    <button class="boton-paginacion" id="btn-anterior" onclick="cambiarPagina(-1)">
+                        <span>❮</span> Anterior
+                    </button>
+                    
+                    <div class="paginacion-numeros" id="paginacionNumeros"></div>
+                    
+                    <button class="boton-paginacion" id="btn-siguiente" onclick="cambiarPagina(1)">
+                        Siguiente <span>❯</span>
+                    </button>
+                    <button class="boton-paginacion" id="btn-ultima" onclick="irAUltimaPagina()">
+                        <span>❯❯</span>
+                    </button>
+                </div>
+                
+                <div class="paginacion-selector">
+                    <label for="items-por-pagina">Mostrar:</label>
+                    <select id="items-por-pagina" onchange="cambiarItemsPorPagina()">
+                        <option value="4" selected>4 por página</option>
+                        <option value="8">8 por página</option>
+                        <option value="12">12 por página</option>
+                        <option value="16">16 por página</option>
+                        <option value="<%= superheroes.length %>">Todos</option>
+                    </select>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<!-- JS -->
+<script> window.superheroes = <%- JSON.stringify(superheroes) %>; </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/dashboard.js"></script>

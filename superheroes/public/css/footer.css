@@ -1,0 +1,74 @@
+/* Footer Styles */
+footer {
+    background: #667eea;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+}
+
+footer::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: white;
+    margin: 0 auto 20px;
+    border-radius: 2px;
+    animation: expandWidth 0.8s ease-in-out;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100px;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    footer {
+        padding: 25px 15px;
+    }
+    
+    footer p {
+        font-size: 0.85rem;
+    }
+    
+    footer::before {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 20px 10px;
+    }
+    
+    footer p {
+        font-size: 0.75rem;
+    }
+}
